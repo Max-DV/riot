@@ -1,4 +1,4 @@
-package io.steria.pox3.war;
+package io.steria.pox3.got.war;
 
 import io.steria.pox3.got.game.Player;
 import io.steria.pox3.got.story.House;

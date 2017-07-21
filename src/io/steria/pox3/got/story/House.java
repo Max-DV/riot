@@ -13,6 +13,7 @@ public class House {
 	Player player;
 
 	public House(String pName, String pWords) {
+		
 		this.name= pName;
 		this.words= pWords;		
 	}

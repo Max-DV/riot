@@ -1,6 +1,6 @@
 package io.steria.pox3.got.tile;
 
-import io.steria.pox3.war.IArmy;
+import io.steria.pox3.got.war.IArmy;
 
 public abstract class Tile {
 
@@ -20,6 +20,14 @@ public abstract class Tile {
 	
 	boolean isFree(){
 		return true;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public int getX() {

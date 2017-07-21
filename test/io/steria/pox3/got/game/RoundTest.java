@@ -8,9 +8,9 @@ import org.junit.Test;
 import io.steria.pox3.got.story.House;
 import io.steria.pox3.got.story.HouseFactory;
 import io.steria.pox3.got.tile.World;
-import io.steria.pox3.war.Army;
-import io.steria.pox3.war.Direction;
-import io.steria.pox3.war.IArmy;
+import io.steria.pox3.got.war.Army;
+import io.steria.pox3.got.war.Direction;
+import io.steria.pox3.got.war.IArmy;
 
 public class RoundTest {
 
@@ -30,14 +30,14 @@ public class RoundTest {
 	public void setUp() throws Exception {
 		world = new World();
 		world.generate();
-		this.game= new Game();
+		this.game= new Game(world);
 		
 		HouseFactory factory= new HouseFactory();
 		this.stark= factory.getStark();
 		this.lannister=factory.getLannister();
 		
-		this.a= new Player("Anne", lannister);
-		this.b= new Player("Nicolas", stark);
+		this.a= new Player(game, "Anne", lannister);
+		this.b= new Player(game,"Nicolas", stark);
 		
 		game.players.add(this.a);
 		game.players.add(this.b);

@@ -5,10 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.steria.pox3.got.game.Game;
+import io.steria.pox3.got.game.Player;
 import io.steria.pox3.got.story.House;
 import io.steria.pox3.got.story.HouseFactory;
 import io.steria.pox3.got.tile.Domain;
 import io.steria.pox3.got.tile.World;
+import io.steria.pox3.got.war.Army;
+import io.steria.pox3.got.war.ArmyState;
+import io.steria.pox3.got.war.Direction;
+import io.steria.pox3.got.war.IArmy;
 
 public class IArmyTest {
 
@@ -21,26 +27,31 @@ public class IArmyTest {
     HouseFactory factory = new HouseFactory();
     House stark = factory.getStark();
     House arryn = factory.getArryn();
-
+    House lannister= factory.getLannister();
+    Game game;
+    Player a,b; 
     @Before
     public void setUp() throws Exception {
 
+    	lannister= factory.getLannister();
         world = new World();
         world.generate();
-        winterfell3 = (Domain) world.get(3, 2); // on caste a domain pour pas
-                                                // avoir de l'eaus
+        this.game= new Game(world);
+        winterfell3 = (Domain) world.get(3, 2); 
         army = new Army(3, stark, winterfell3);
         winterfell3.setArmy(army);
 
-        winterfell6 = (Domain) world.get(3, 3); // on caste a domain pour pas
-                                                // avoir de l'eaus
-        army = new Army(3, stark, winterfell6);
-        winterfell6.setArmy(army);
+    
 
         erye1 = (Domain) world.get(3, 3);
         bigArmy = new Army(9, arryn, erye1);
         erye1.setArmy(bigArmy);
-	}
+	
+        this.a= new Player(game, "Anne", lannister);
+		this.b= new Player(game,"Nicolas", stark);
+		lannister.setPlayer(a);
+		stark.setPlayer(b);
+    }
 
 	@Test
 	public void testGetsTroops() {
@@ -51,7 +62,7 @@ public class IArmyTest {
 
 	@Test
 	public void testMoveIntDomain() {
-		army.move(Direction.SOUTH);
+		army.move(2, Direction.SOUTH);
 		assertEquals(3, army.getPosition().getX());
 		assertEquals(3, army.getPosition().getY());
 		assertEquals(1, winterfell3.getArmy().getReadyTroops());

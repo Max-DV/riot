@@ -16,13 +16,20 @@ public class Player {
 	
 	public int moves= 3;
 	
-	public Player(String name, House house) {
+	public Player(Game game,String name, House house) {
+		this.game = game;
 		this.name = name;
 		this.house = house;
 		// argh, bidirection handling
 		this.house.setPlayer(this);
 		// but this link never moves. Not so bad
 	}
+	
+	
+	public Game getGame() {
+		return game;
+	}
+
 
 	boolean chooseName (String pName) {
 		

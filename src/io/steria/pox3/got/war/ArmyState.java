@@ -1,4 +1,4 @@
-package io.steria.pox3.war;
+package io.steria.pox3.got.war;
 
 public enum ArmyState {
 
